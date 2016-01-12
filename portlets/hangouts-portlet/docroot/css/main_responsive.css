@@ -1,0 +1,66 @@
+@import "mixins";
+
+@include respond-to(phone, tablet) {
+    .aui .hangouts-portlet {
+        div.groups-list {
+            padding: 0.5em 10px;
+            .group-label {
+                width: 55%;
+                display: inline-block;
+            }
+            ul > li.editing  {
+                .group-options.show,  
+                .group-options {
+                    display: none !important;
+                }
+            }
+        }
+        h3.hangouts-group-name,
+        h3.hangouts-group-name:hover {
+            .icon-pencil {
+                display: inline-block;
+            }
+        }
+        .form-search {
+            button {
+                display: inline-block;
+            }
+        }
+    }
+}
+@include respond-to(phone) {
+    .aui .hangouts-portlet {
+        .form-search {
+            input {
+                width: 90%;
+                padding: 5px 5%;
+                margin: 0;
+            }
+        }
+        .hangouts-users-to-call ul.users li {
+            width: 90%;
+            padding: 5px 5%;
+            div {
+                text-align: center;
+            }
+            .handle {
+            	float: right;
+            }
+        }
+        
+        .pagination {
+            li {
+                display: none;
+                a {
+                    padding: 10px 5px;
+                }
+            }
+            li.first-pagination-control,
+            li.last-pagination-control,
+            li.pagination-control,
+            li.active {
+                display: inline;
+            }
+        }
+    }
+}

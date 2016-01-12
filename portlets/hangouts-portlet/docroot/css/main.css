@@ -1,0 +1,198 @@
+@import url(main_responsive.css);
+
+.hangouts-button {
+	display: inline-block;
+}
+
+.hangouts-users .icon-hangouts, .hangouts-users .icon-phone {
+	font-size: 1.6em;
+	cursor: pointer;
+}
+
+.hangouts-users .icon-hangouts span, .hangouts-users .icon-phone span{
+	display: none;
+}
+
+.hangouts-chat .icon-hangouts {
+	padding-left: 0.5em;
+}
+
+.phone-chat .icon-phone {
+	padding-left: 0.5em;
+}
+
+.hangouts-users-to-call {
+	border: solid 1px #CCC;
+	padding: 1em;
+	margin: 2em 0;
+}
+
+.aui .hangouts-users-to-call > button {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.hangouts-users-to-call ul.users li {
+	list-style: none;
+	background: #DEF;
+	padding: 0.5em;
+	display: inline-block;
+	margin-right: 1em;
+	margin-bottom: 0.5em;
+}
+
+.hangouts-users-to-call ul.users li:hover {
+	background: #CDE;
+}
+
+.hangouts-users-to-call .handle:after {
+	content: "\f00d";
+	width: 1em;
+	height: 1em;
+	font-family: 'fontawesome-alloy';
+	padding: 0.5em;
+	color: #b7414d;
+	font-size: 1.2em;
+}
+
+.hangouts-users-to-call .handle {
+ 	cursor: pointer;
+ }
+
+ .hangouts-portlet .portlet-msg-error {
+ 	display: none;
+ 	margin-top: 1.5em;
+ }
+
+.hangouts-portlet ul.groups > li {
+    list-style-type: none;
+    border-bottom: solid 1px #CCC;
+    padding: 0.5em;
+}
+.hangouts-portlet .btn.group i {
+    padding-right: 0.5em;
+    color: #666;
+}
+
+.hangouts-portlet .btn-toolbar button i:hover {
+    background: none !important;
+}
+
+div.groups-list {
+	display: none;
+	border: solid 1px #CCC;
+	border-radius: 5px;
+	padding: 0.5em 2em 2em;
+	margin-top: 1em;
+    
+    ul {
+        margin: 0;
+    }
+    ul > li {
+        .group-options {
+            display: inline-block;
+        }
+    }
+}
+.hangouts-portlet ul.groups > li:hover, .hangouts-portlet ul.groups > li:nth-child(2n):hover {
+    background: #EDF8FD;
+    cursor: pointer;
+}
+.hangouts-portlet ul.groups > li:nth-child(2n) {
+    background: #F5F5F5;
+}
+
+ul.users {
+	padding: 0;
+	margin: 0;
+}
+
+div.group-save {
+	display: none;
+	padding: 0.7em;
+	display: none;
+	border: solid 1px #CCC;
+	border-radius: 5px;
+	padding: 0.5em 2em 2em;
+	margin-top: 1em;
+}
+
+ul.groups > li {
+    position: relative;
+}
+
+.group-options {
+    position: absolute;
+	font-size: 1.5em;
+	right: 1em;
+	z-index: 1;
+	top: 0.2em;
+	display: none;
+}
+
+.options {
+	padding: 1.5em 0;
+}
+.group-options i {
+    padding: 0.5em;
+}
+.icon-pencil:hover, .icon-folder-open:hover {
+    color: #5BBAE8;
+}
+.icon-remove:hover {
+    color: red;
+}
+
+.edit-group {
+	display: none;
+}
+
+.hangouts-portlet .edit-group input {
+    height: 43px;
+    font-size: 24.5px;
+}
+
+div.hangouts-modal * {
+	z-index: 300 !important;
+}
+
+.hangouts-portlet {
+    .form-search {
+        button {
+            display: none;
+        }
+    }
+    .pagination {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+#edit-options {
+    display: none;
+}
+
+h3.hangouts-group-name {
+    display: inline-block;
+    .icon-pencil {
+        display: none;
+    }
+    
+}
+h3.hangouts-group-name:hover {
+    .icon-pencil {
+        display: inline-block;
+    }
+}
+
+.hangouts-portlet table .center {
+    text-align: center;
+}
+
+.hangouts-portlet table .hangouts-btn-cell {
+    width: 50px;
+}
+
+.hangouts-portlet table .phone-btn-cell {
+    width: 105px;
+}

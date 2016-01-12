@@ -1,0 +1,173 @@
+<%--
+/**
+ * Copyright (C) 2005-2016 Rivet Logic Corporation.
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; version 3 of the License.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 51
+ */
+--%>
+
+<aui:script use="hangouts-portlet">
+    var hangouts = new A.Hangouts({
+        container: A.one('#<portlet:namespace/>'),
+        resourceUrl: '<portlet:resourceURL />',
+        portletNamespace: '${pns}',
+        usersPerPage: ${prefBean.usersPerPage},
+        groupsPerPage: ${prefBean.groupsPerPage}
+    });
+</aui:script>
+
+<div id="<portlet:namespace />" class="hangouts-portlet">
+
+    <script id="${pns}item-template" type="text/x-handlebars-template">
+        <li class="hangouts-chat" email="{{email}}" userid="{{userid}}">
+            <div>
+                {{first-name}} {{last-name}}
+                <span class="icon-google-plus"></span>
+                <span class="handle"></span>
+            </div>
+        </li>
+    </script>
+
+    <script id="${pns}pagination-template" type="text/x-handlebars-template">
+        <ul id="${pns}users-table-pagination" class="pagination-content">
+            <li class="pagination-control" id="${pns}pagination-first"><a href="#">&laquo;</a></li>
+            <li class="pagination-control" id="${pns}pagination-previous"><a href="#">&lsaquo;</a></li>
+            {{#items}}
+                {{#if isCurrent}}
+                   <li class="pagination-number active"><a href="#">{{number}}</a></li>
+                {{else}}
+                    <li class="pagination-number"><a href="#">{{number}}</a></li>
+                {{/if}}
+            {{/items}}
+            <li class="pagination-control" id="${pns}pagination-next"><a href="#">&rsaquo;</a></li>
+            <li class="pagination-control" id="${pns}pagination-last"><a href="#">&raquo;</a></li>
+        </ul>
+    </script>
+
+    <script id="${pns}table-template" type="text/x-handlebars-template">
+        <table class="aui table table-bordered table-hover table-striped hangouts-users">
+            <thead>
+                <tr>
+                    {{#if isOrderedName}}
+                        {{#if nameAsc}}
+                            <th id="${pns}name" class="table-sortable-column table-sorted-desc">
+                        {{else}}
+                            <th id="${pns}name" class="table-sortable-column table-sorted">
+                        {{/if}}
+                    {{else}}
+                             <th id="${pns}name" class="table-sortable-column">
+                    {{/if}}
+                        <div class="table-sort-liner">
+                            <liferay-ui:message key="first-name"/> <span class="table-sort-indicator"></span>
+                        </div>
+                    </th>
+
+                    {{#if isOrderedLastName}}
+                        {{#if lastNameAsc}}
+                            <th id="${pns}lastname" class="table-sortable-column table-sorted-desc">
+                        {{else}}
+                            <th id="${pns}lastname" class="table-sortable-column table-sorted">
+                        {{/if}}
+                    {{else}}
+                             <th id="${pns}lastname" class="table-sortable-column">
+                    {{/if}}
+                        <div class="table-sort-liner">
+                            <liferay-ui:message key="last-name"/> <span class="table-sort-indicator"></span>
+                        </div>
+                    </th>
+                    <th id="${pns}email"><liferay-ui:message key="email"/></th>
+                    <th id="${pns}hangouts"><liferay-ui:message key="hangouts"/></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#users}}
+                <tr>
+                    <td>{{first-name}}</td>
+                    <td>{{last-name}}</td>
+					<td>{{email}}</td>
+                    <td class="center hangouts-btn-cell">
+                    	<span class="icon-google-plus" title="{{email}}" userid="{{user-id}}"></span>
+                    </td>
+                </tr>
+                {{/users}}
+            </tbody>
+        </table>
+    </script>
+
+    <script id="${pns}groups-template" type="text/x-handlebars-template">
+        <h4><liferay-ui:message key="label.saved.groups"/></h4>
+        <ul id="${pns}groups" class="groups">
+            {{#each groups}}
+            <li>
+                <span class="group-label">{{hangouts-group-name}}</span>
+                <ul class="group-options">
+                    <li title="<liferay-ui:message key="label.open.group"/>" class="icon-folder-open" group-id={{hangouts-group-id}}></li>
+                    <!-- <li class="icon-pencil"></li> -->
+                    <li title="<liferay-ui:message key="label.delete.group"/>" class="icon-remove"></li>   
+                </ul>
+                <div class="edit-group">
+                    <input type="text">
+                    <button class="btn save-edit-group list-item"><liferay-ui:message key="save"/></button>
+                    <button class="btn cancel-edit-group"><liferay-ui:message key="cancel"/></button>
+                </div>
+            </li>
+            {{/each}}
+    </script>
+
+<div id="${pns}modal" class="hangouts-modal"></div>
+<div class="hangouts-users-to-call">
+    <h3 id="${pns}group-name" class="hangouts-group-name hidden">
+    	<span><liferay-ui:message key="label.unnamed.group"/></span> 
+    	<i class="icon-pencil"></i>
+    </h3>
+    <div class="edit-group">
+    	<input type="text">
+    	<!-- <button class="btn save-edit-group"><liferay-ui:message key="save"/></button>
+        <button class="btn cancel-edit-group"><liferay-ui:message key="cancel"/></button> -->
+    </div>
+	<ul class="users" id="${pns}users">
+	</ul>
+	<div class="btn-toolbar">
+        <div class="btn-group">
+        	<div id="hangouts-button-placeholder"></div>
+            <button id="${pns}hangouts-save" class="btn group disabled group-save-btn" title="<liferay-ui:message key="action.save.group"/>"><i class="icon-save"></i></button>
+            <button id="${pns}hangouts-load" class="btn group" title="<liferay-ui:message key="action.open.groups"/>"><i class="icon-align-justify"></i></button>
+            <button id="${pns}hangouts-new-group" class="btn group" title="<liferay-ui:message key="action.new.group"/>"><i class="icon-file"></i></button>
+        </div>
+    </div>
+    
+    <div class="portlet-msg-error"><liferay-ui:message key="error.message.select.one.user"/></div>
+    
+        
+    <div id="${pns}groups-list" class="groups-list">
+        <div class="groups-wrapper">
+        </div>
+        <div class="groups-pagination pagination pagination-small">
+        </div>
+    </div>
+    <div id="${pns}group-save" class="group-save">
+        <label><liferay-ui:message key="label.save.as"/>:</label>
+        <input type="text" id="${pns}group-name-edit">
+        <button id="${pns}hangouts-save-as" class="btn group"><i class="icon-save"></i><liferay-ui:message key="save"/></button>
+    </div>
+     
+</div>
+<div class="users-container well">
+    <form class="form-search">
+        <input type="text" placeholder="<liferay-ui:message key="hangouts-search-placeholder"/>" class="input-medium search-query">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <div id="${pns}users-table"></div>
+    <div id="${pns}table-pagination" class="pagination"></div>
+</div>
+</div>

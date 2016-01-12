@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.rivetlogic.hangouts.model.HangoutsGroup" />
+	<class name="com.rivetlogic.hangouts.model.impl.HangoutsGroupImpl" table="rivetlogic_hangouts_HangoutsGroup">
+		<cache usage="read-write" />
+		<id name="hangoutsGroupId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="groupName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="hangoutsContacts" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

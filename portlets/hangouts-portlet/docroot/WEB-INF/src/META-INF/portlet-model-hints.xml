@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.rivetlogic.hangouts.model.HangoutsGroup">
+		<field name="hangoutsGroupId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="groupName" type="String" />
+		<field name="hangoutsContacts" type="String" />
+	</model>
+</model-hints>

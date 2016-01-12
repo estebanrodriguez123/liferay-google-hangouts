@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_1_0.dtd">
+<service-builder package-path="com.rivetlogic.hangouts">
+	<author>Rivet Logic</author>
+	<namespace>rivetlogic_hangouts</namespace>
+
+	<entity name="HangoutsGroup" local-service="true" remote-service="false">
+
+		<!-- PK fields -->
+		<column name="hangoutsGroupId" type="long" primary="true" />
+
+		<!-- Audit fields -->
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+		
+		<column name="groupName" type="String" />
+		<!-- Contacts -->
+		<column name="hangoutsContacts" type="String" json-enabled="true"/>
+		
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="modifiedDate" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="UserId" return-type="Collection">
+			<finder-column name="userId" />
+		</finder>
+		<finder name="UserIdAndGroupName" return-type="HangoutGroup" unique="true">
+			<finder-column name="userId" />
+			<finder-column name="groupName" />
+		</finder>
+	</entity>
+</service-builder>

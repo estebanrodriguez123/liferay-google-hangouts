@@ -4,20 +4,16 @@
 	display: inline-block;
 }
 
-.hangouts-users .icon-hangouts, .hangouts-users .icon-phone {
+.hangouts-users .icon-hangouts, .hangouts-users {
 	font-size: 1.6em;
 	cursor: pointer;
 }
 
-.hangouts-users .icon-hangouts span, .hangouts-users .icon-phone span{
+.hangouts-users .icon-hangouts span, .hangouts-users span{
 	display: none;
 }
 
 .hangouts-chat .icon-hangouts {
-	padding-left: 0.5em;
-}
-
-.phone-chat .icon-phone {
 	padding-left: 0.5em;
 }
 
@@ -30,6 +26,10 @@
 .aui .hangouts-users-to-call > button {
     margin-right: 5px;
     margin-bottom: 5px;
+}
+
+.aui .hangouts-users-to-call .btn-toolbar .btn-group .btn {
+	float: right;
 }
 
 .hangouts-users-to-call ul.users li {
@@ -191,8 +191,4 @@ h3.hangouts-group-name:hover {
 
 .hangouts-portlet table .hangouts-btn-cell {
     width: 50px;
-}
-
-.hangouts-portlet table .phone-btn-cell {
-    width: 105px;
 }

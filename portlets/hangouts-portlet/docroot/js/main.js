@@ -441,7 +441,7 @@ AUI.add('hangouts-portlet', function (Y, NAME) {
                 });
                 me.get('container').one('.group-save-btn').removeClass('disabled');
                 Y.one('#' + me.pns + 'group-name').removeClass('hidden');
-            }, ".icon-google-plus");
+            }, ".btn-hangout");
         },
 
         /**

@@ -189,6 +189,15 @@ h3.hangouts-group-name:hover {
     text-align: center;
 }
 
+.hangouts-portlet table tr td {
+    vertical-align: middle !important;
+}
+
 .hangouts-portlet table .hangouts-btn-cell {
-    width: 50px;
+    width: 70px;
+}
+
+.hangouts-portlet table .hangouts-btn-cell .btn-hangout {
+	background-color: #53A93F;
+	background-image: none;
 }

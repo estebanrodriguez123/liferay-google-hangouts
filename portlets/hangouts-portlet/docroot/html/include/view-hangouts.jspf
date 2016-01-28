@@ -86,7 +86,7 @@
                         </div>
                     </th>
                     <th id="${pns}email"><liferay-ui:message key="email"/></th>
-                    <th id="${pns}hangouts"><liferay-ui:message key="hangouts"/></th>
+                    <th id="${pns}hangouts"><liferay-ui:message key="label.hangouts"/></th>
                 </tr>
             </thead>
             <tbody>
@@ -96,7 +96,9 @@
                     <td>{{last-name}}</td>
 					<td>{{email}}</td>
                     <td class="center hangouts-btn-cell">
-                    	<span class="icon-google-plus" title="{{email}}" userid="{{user-id}}"></span>
+						<button class="btn btn-success btn-small btn-hangout" title="{{email}}" userid="{{user-id}}">
+							<span class="icon icon-plus"></span> Add
+						</button>
                     </td>
                 </tr>
                 {{/users}}

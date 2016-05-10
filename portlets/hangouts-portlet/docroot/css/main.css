@@ -1,3 +1,4 @@
+@import "mixins";
 @import url(main_responsive.css);
 
 .hangouts-button {
@@ -185,12 +186,30 @@ h3.hangouts-group-name:hover {
     }
 }
 
+// .hangouts-portlet .btn-group div,
+// .hangouts-portlet .btn-group button {
+//     vertical-align: top;
+// }
+
+.hangouts-portlet .users-table {
+	// overflow: auto;
+}
+
+.hangouts-portlet table td {
+	@include respond-to(tablet, desktop) {
+		max-width: 200px;
+	}
+	word-wrap: break-word;
+}
+
 .hangouts-portlet table .center {
     text-align: center;
 }
 
 .hangouts-portlet table .hangouts-btn-cell {
-    width: 50px;
+		@include respond-to(tablet, desktop) {
+			width: 50px;
+		}
 }
 
 .hangouts-portlet table .phone-btn-cell {

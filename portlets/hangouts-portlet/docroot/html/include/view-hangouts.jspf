@@ -92,9 +92,9 @@
             <tbody>
                 {{#users}}
                 <tr>
-                    <td>{{first-name}}</td>
-                    <td>{{last-name}}</td>
-					<td>{{email}}</td>
+                    <td class="firstname-col">{{first-name}}</td>
+                    <td lass="lastname-col">{{last-name}}</td>
+					<td lass="email-col">{{email}}</td>
                     <td class="center hangouts-btn-cell">
 						<button class="btn btn-success btn-small btn-hangout" title="{{email}}" userid="{{user-id}}">
 							<span class="icon icon-plus"></span> Add
@@ -140,8 +140,10 @@
 	<ul class="users" id="${pns}users">
 	</ul>
 	<div class="btn-toolbar">
+        <div class="">
+          <div id="hangouts-button-placeholder"></div>
+        </div>
         <div class="btn-group">
-        	<div id="hangouts-button-placeholder"></div>
             <button id="${pns}hangouts-save" class="btn group disabled group-save-btn" title="<liferay-ui:message key="action.save.group"/>"><i class="icon-save"></i></button>
             <button id="${pns}hangouts-load" class="btn group" title="<liferay-ui:message key="action.open.groups"/>"><i class="icon-align-justify"></i></button>
             <button id="${pns}hangouts-new-group" class="btn group" title="<liferay-ui:message key="action.new.group"/>"><i class="icon-file"></i></button>
@@ -169,7 +171,14 @@
         <input type="text" placeholder="<liferay-ui:message key="hangouts-search-placeholder"/>" class="input-medium search-query">
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
-    <div id="${pns}users-table"></div>
+    <div id="${pns}users-table" class="users-table"></div>
     <div id="${pns}table-pagination" class="pagination"></div>
 </div>
 </div>
+<style>
+  @media only screen and (max-width: 767px) {
+    .hangouts-portlet .users-table td:nth-of-type(1):before { content: "<liferay-ui:message key="first-name"/>"; }
+  	.hangouts-portlet .users-table td:nth-of-type(2):before { content: "<liferay-ui:message key="last-name"/>"; }
+  	.hangouts-portlet .users-table td:nth-of-type(3):before { content: "<liferay-ui:message key="email"/>"; }
+  }
+</style>

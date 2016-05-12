@@ -1,19 +1,24 @@
+@import "mixins";
 @import url(main_responsive.css);
 
 .hangouts-button {
 	display: inline-block;
 }
 
-.hangouts-users .icon-hangouts, .hangouts-users {
+.hangouts-users .icon-hangouts, .hangouts-users .icon-phone {
 	font-size: 1.6em;
 	cursor: pointer;
 }
 
-.hangouts-users .icon-hangouts span, .hangouts-users span{
+.hangouts-users .icon-hangouts span, .hangouts-users .icon-phone span{
 	display: none;
 }
 
 .hangouts-chat .icon-hangouts {
+	padding-left: 0.5em;
+}
+
+.phone-chat .icon-phone {
 	padding-left: 0.5em;
 }
 
@@ -26,10 +31,6 @@
 .aui .hangouts-users-to-call > button {
     margin-right: 5px;
     margin-bottom: 5px;
-}
-
-.aui .hangouts-users-to-call .btn-toolbar .btn-group .btn {
-	float: right;
 }
 
 .hangouts-users-to-call ul.users li {
@@ -185,19 +186,32 @@ h3.hangouts-group-name:hover {
     }
 }
 
+// .hangouts-portlet .btn-group div,
+// .hangouts-portlet .btn-group button {
+//     vertical-align: top;
+// }
+
+.hangouts-portlet .users-table {
+	// overflow: auto;
+}
+
+.hangouts-portlet table td {
+	@include respond-to(tablet, desktop) {
+		max-width: 200px;
+	}
+	word-wrap: break-word;
+}
+
 .hangouts-portlet table .center {
     text-align: center;
 }
 
-.hangouts-portlet table tr td {
-    vertical-align: middle !important;
-}
-
 .hangouts-portlet table .hangouts-btn-cell {
-    width: 70px;
+		@include respond-to(tablet, desktop) {
+			width: 50px;
+		}
 }
 
-.hangouts-portlet table .hangouts-btn-cell .btn-hangout {
-	background-color: #53A93F;
-	background-image: none;
+.hangouts-portlet table .phone-btn-cell {
+    width: 105px;
 }
